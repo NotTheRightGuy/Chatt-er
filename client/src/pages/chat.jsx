@@ -20,9 +20,9 @@ function ChatRoom() {
         setBubbles([...bubbles, newBubble]);
         chatRef.current.value = "";
     };
-    socket.on('receive-message',message=>{
-        setBubbles([...bubbles,message]);
-    })
+    socket.on("receive-message", (message) => {
+        setBubbles([...bubbles, message]);
+    });
     return (
         <div className="chatroom-container">
             <div className="chatContainers">
