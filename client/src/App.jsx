@@ -11,7 +11,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/chat" element={<ChatRoom />} />
+            <Route path="/chatroom" element={<ChatRoom />} />
         </Routes>
     );
 }

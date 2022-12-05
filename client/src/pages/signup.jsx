@@ -15,7 +15,6 @@ function SignUp() {
         axios
             .post("https://Chatter.talkingaboutabout.repl.co/api/creds/", user)
             .then((res) => {
-                console.log(res);
                 window.location.href = "/login";
             })
             .catch((err) => {

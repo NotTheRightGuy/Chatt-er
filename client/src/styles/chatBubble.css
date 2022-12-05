@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap");
+
+.chat-bubble {
+    background-color: #acddf3;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    word-wrap: break-word;
+    color: #000;
+    font-family: "Source Sans Pro", sans-serif;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.chat-bubble .user {
+    font-weight: bold;
+    opacity: 0.7;
+    font-weight: 300;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.chat-bubble .message {
+    font-size: 20px;
+}

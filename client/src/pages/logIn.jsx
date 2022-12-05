@@ -1,10 +1,12 @@
 import "../styles/login.css";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import InvalidPass from "../components/invalidPass";
 import axios from "axios";
 
 function LogIn() {
     const userNameRef = useRef(null);
     const passwordRef = useRef(null);
+    const [wrongPass, setWrongPass] = useState(false);
     const handleLogin = () => {
         axios
             .get(
@@ -13,8 +15,10 @@ function LogIn() {
             .then((res) => {
                 if (res.data.password === passwordRef.current.value) {
                     console.log("Logged in");
+                    window.location.href = `/chatroom?=${userNameRef.current.value}`;
                 } else {
-                    console.log("Invalid password");
+                    setWrongPass(true);
+                    setTimeout(() => setWrongPass(false), 3000);
                 }
             })
             .catch((err) => {
@@ -23,6 +27,7 @@ function LogIn() {
     };
     return (
         <div className="login-container">
+            {wrongPass ? <InvalidPass /> : null}
             <div className="login-title">Log In</div>
             <div className="login-form">
                 <input type="text" ref={userNameRef} placeholder="Username" />
