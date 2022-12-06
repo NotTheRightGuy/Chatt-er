@@ -1,60 +1,83 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap");
-
-.top-banner {
-    height: 51vh;
-    background-color: #121a28;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,100&display=swap");
+.main-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 75vh;
+    width: 100vw;
 }
 
-.bottom-container {
-    height: 49vh;
-    background-image: url(../assets/andrew-kow-Ndxgo2Bn3WY-unsplash.jpg);
-    background-size: 100vw 70vh;
-}
-
-.top-banner .title {
-    text-align: center;
-    width: 40rem;
-    font-size: 64px;
-    color: white;
+.Homepage-title {
     font-family: "Playfair Display", serif;
+    font-size: 12rem;
+    animation: wiggleUpAndDown 3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+        infinite;
 }
 
-.top-banner .getStarted {
-    margin-top: 2rem;
-    text-align: center;
+.Homepage-subtitle {
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    font-style: italic;
+    animation: flyin 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes flyin {
+    0% {
+        transform: translateY(180%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes wiggleUpAndDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.5rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.login-button button {
+    margin-top: 3rem;
+    font-family: "Playfair Display", serif;
+    font-size: 1.2rem;
+    padding: 0.4rem;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
     width: 10rem;
-    border-radius: 28px;
     height: 3rem;
-    color: white;
-    font-size: 24px;
-    background-color: #43987f;
-    font-family: "Playfair Display", serif;
-    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation: flyin 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.top-banner .getStarted:hover {
-    transform: translateY(-4px);
-    background-color: #2e6d5c;
+.login-button button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 @media screen and (max-width: 768px) {
-    .top-banner {
-        height: 100vh;
+    .Homepage-title {
+        font-size: 4rem;
     }
-
-    .top-banner .title {
-        font-size: 32px;
-        width: 20rem;
+    .Homepage-subtitle {
+        font-size: 1.2rem;
     }
-
-    .top-banner .getStarted {
+    .login-button button {
+        font-size: 1rem;
         width: 8rem;
         height: 2rem;
-        font-size: 16px;
     }
 }
