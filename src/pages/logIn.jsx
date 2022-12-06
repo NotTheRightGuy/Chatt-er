@@ -10,7 +10,7 @@ function LogIn() {
     const handleLogin = () => {
         axios
             .get(
-                `https://Chatter-Server.talkingaboutabout.repl.coapi/creds/?username=${userNameRef.current.value}`
+                `https://Chatter-Server.talkingaboutabout.repl.co/api/creds/?username=${userNameRef.current.value}`
             )
             .then((res) => {
                 if (res.data.password === passwordRef.current.value) {

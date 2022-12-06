@@ -14,7 +14,7 @@ function SignUp() {
         };
         axios
             .post(
-                "https://Chatter-Server.talkingaboutabout.repl.coapi/creds/",
+                "https://Chatter-Server.talkingaboutabout.repl.co/api/creds/",
                 user
             )
             .then((res) => {
