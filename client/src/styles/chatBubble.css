@@ -1,47 +1,82 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap");
-
-.chat-bubble {
-    background-color: #acddf3;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    word-wrap: break-word;
-    color: #000;
-    font-family: "Source Sans Pro", sans-serif;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+.chat-container div {
+    border-radius: 1.15rem;
+    max-width: 75%;
+    padding: 0.5rem 0.5rem;
+    position: relative;
 }
 
-.chat-bubble .user {
-    font-weight: bold;
-    opacity: 0.7;
+.chat-container div::before,
+.chat-container div::after {
+    bottom: -0.1rem;
+    content: "";
+    height: 1rem;
+    position: absolute;
+}
+
+.chat-container .my-chat-bubble {
+    align-self: flex-end;
+    background-color: #248bf5;
+    color: #fff;
+    margin-bottom: 0.7rem;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.chat-container .my-chat-bubble .my-chat-bubble-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.chat-container .my-chat-bubble .my-chat-bubble-user {
+    font-size: 1rem;
     font-weight: 300;
-    font-size: 14px;
-    margin-bottom: 5px;
 }
 
-.chat-bubble .message {
-    font-size: 20px;
+.chat-container .my-chat-bubble::before {
+    border-bottom-left-radius: 0.8rem 0.7rem;
+    border-right: 1rem solid #248bf5;
+    right: -0.35rem;
+    transform: translate(0, -0.1rem);
 }
 
-.personal-chat-bubble {
-    background-color: #9bf9a5;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    word-wrap: break-word;
-    color: #000;
-    font-family: "Source Sans Pro", sans-serif;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.chat-container .my-chat-bubble::after {
+    background-color: #fff;
+    border-bottom-left-radius: 0.5rem;
+    right: -40px;
+    transform: translate(-30px, -2px);
+    width: 10px;
 }
 
-.personal-chat-bubble .user {
-    font-weight: bold;
-    opacity: 0.7;
+.chat-container .other-chat-bubble {
+    align-self: flex-start;
+    background-color: #68b984;
+    color: #fff;
+    margin-bottom: 0.7rem;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.chat-container .other-chat-bubble .other-chat-bubble-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.chat-container .other-chat-bubble .other-chat-bubble-user {
+    font-size: 1rem;
     font-weight: 300;
-    font-size: 14px;
-    margin-bottom: 5px;
 }
 
-.personal-chat-bubble .message {
-    font-size: 20px;
+.chat-container .other-chat-bubble .other-chat-bubble-time {
+    position: absolute;
+    right: 0;
+    top: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+.chat-container .my-chat-bubble .my-chat-bubble-time {
+    font-size: 0.8rem;
+    font-weight: 300;
+    position: absolute;
+    right: 0;
+    top: 0.6rem;
 }

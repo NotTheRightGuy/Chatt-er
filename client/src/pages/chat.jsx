@@ -1,73 +1,84 @@
 import "../styles/chatroom.css";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
+import SendImage from "../assets/Right-arrow.png";
+
+import OtherChats from "../components/fromChats";
+import MyChats from "../components/toChats";
+
 import { io } from "socket.io-client";
-import OtherUserChatBubble from "../components/otherUserChat";
-import UserChatBubble from "../components/personalUserChat";
-const prevBubbles = [];
 var socket = io("https://Chatter.talkingaboutabout.repl.co");
 
 function ChatRoom() {
     const userName = window.location.href.split("=")[1];
-    const [bubbles, setBubbles] = useState(prevBubbles);
+    const [bubbles, setBubbles] = useState([]);
     const chatRef = useRef(null);
+
     const submitChatClick = () => {
         const chatText = chatRef.current.value;
         if (chatText === "") {
             return;
         }
-        const newBubble = { message: chatText, user: userName };
-        socket.emit("new-message", newBubble);
-        setBubbles([...bubbles, newBubble]);
-        chatRef.current.value = "";
+        const newBubble = {
+            message: chatText,
+            user: userName,
+            time: new Date().toLocaleString("en-US", {
+                hour: "numeric",
+                minute: "numeric",
+                hour12: false,
+            }),
+        };
+        socket.emit("new-message", newBubble); //Emitting the new message to the server
+
+        setBubbles([...bubbles, newBubble]); //Adding the new message to the bubbles array
+        chatRef.current.value = ""; //Clearing the input field
     };
+
     socket.on("receive-message", (message) => {
-        setBubbles([...bubbles, message]);
+        //Receiving the new message from the server
+        setBubbles([...bubbles, message]); // Adding the new message to the bubbles array
     });
+
     return (
-        <div className="chatroom-container">
-            <div className="chatContainers">
-                {bubbles.map((bubble) => {
-                    if (bubble.user != userName) {
+        <div className="chatroom">
+            <div className="chat-container">
+                {bubbles.map((bubble, index) => {
+                    if (bubble.user === userName) {
                         return (
-                            <OtherUserChatBubble
-                                key={Math.random()}
+                            <MyChats
+                                key={index}
                                 message={bubble.message}
                                 user={bubble.user}
+                                time={bubble.time}
                             />
                         );
                     } else {
                         return (
-                            <UserChatBubble
-                                key={Math.random()}
+                            <OtherChats
+                                key={index}
                                 message={bubble.message}
                                 user={bubble.user}
+                                time={bubble.time}
                             />
                         );
                     }
                 })}
             </div>
-            <div className="chatSection">
-                <div className="profile-pic"></div>
-                <div className="chatInput">
-                    <input
-                        type="text"
-                        placeholder="Start Typing"
-                        ref={chatRef}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                                submitChatClick();
-                            }
-                        }}
-                    />
-                </div>
-                <div className="deliver">
-                    <button className="sendButton" onClick={submitChatClick}>
-                        <img src="https://img.icons8.com/material/30/null/checkmark--v2.png" />
-                    </button>
-                </div>
+            <div className="chat-input">
+                <input
+                    type="text"
+                    ref={chatRef}
+                    placeholder="Start Typing"
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            submitChatClick();
+                        }
+                    }}
+                />
+                <button onClick={submitChatClick}>
+                    <img src={SendImage} className="send-image" />
+                </button>
             </div>
         </div>
     );
 }
-
 export default ChatRoom;
