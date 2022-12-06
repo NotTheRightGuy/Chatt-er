@@ -13,7 +13,10 @@ function SignUp() {
             password: passwordRef.current.value,
         };
         axios
-            .post("https://Chatter.talkingaboutabout.repl.co/api/creds/", user)
+            .post(
+                "https://Chatter-Server.talkingaboutabout.repl.coapi/creds/",
+                user
+            )
             .then((res) => {
                 window.location.href = "/login";
             })
