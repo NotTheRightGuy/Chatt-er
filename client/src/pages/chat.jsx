@@ -1,8 +1,8 @@
 import "../styles/chatroom.css";
 import { useRef, useState, useEffect } from "react";
 import { io } from "socket.io-client";
-import ChatBubble from "../components/chatBubble";
-
+import OtherUserChatBubble from "../components/otherUserChat";
+import UserChatBubble from "../components/personalUserChat";
 const prevBubbles = [];
 var socket = io("https://Chatter.talkingaboutabout.repl.co");
 
@@ -27,13 +27,23 @@ function ChatRoom() {
         <div className="chatroom-container">
             <div className="chatContainers">
                 {bubbles.map((bubble) => {
-                    return (
-                        <ChatBubble
-                            key={Math.random()}
-                            message={bubble.message}
-                            user={bubble.user}
-                        />
-                    );
+                    if (bubble.user != userName) {
+                        return (
+                            <OtherUserChatBubble
+                                key={Math.random()}
+                                message={bubble.message}
+                                user={bubble.user}
+                            />
+                        );
+                    } else {
+                        return (
+                            <UserChatBubble
+                                key={Math.random()}
+                                message={bubble.message}
+                                user={bubble.user}
+                            />
+                        );
+                    }
                 })}
             </div>
             <div className="chatSection">

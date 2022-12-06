@@ -55,3 +55,14 @@
     background-color: #e2ded0;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+    .deliver button {
+        margin-left: 4rem;
+    }
+
+    .deliver button img {
+        width: 2rem;
+        margin-top: 0.5rem;
+    }
+}

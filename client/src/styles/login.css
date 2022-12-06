@@ -64,3 +64,13 @@
     padding: 0.5rem;
     font-family: "Playfair Display", serif;
 }
+
+@media only screen and (max-width: 600px) {
+    .login-container .login-form input {
+        width: 20rem;
+    }
+
+    .login-container .login-form button {
+        width: 20rem;
+    }
+}
