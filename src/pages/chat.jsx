@@ -6,7 +6,7 @@ import OtherChats from "../components/fromChats";
 import MyChats from "../components/toChats";
 
 import { io } from "socket.io-client";
-var socket = io("https://Chatter.talkingaboutabout.repl.co");
+var socket = io("https://Chatter-Server.talkingaboutabout.repl.co");
 
 function ChatRoom() {
     const userName = window.location.href.split("=")[1];
