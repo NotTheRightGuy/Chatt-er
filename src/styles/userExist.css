@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap");
+
+.userExist {
+    text-align: center;
+    position: absolute;
+    top: 1rem;
+    background-color: #dc3535;
+    padding: 0.7rem;
+    border: black solid 4px;
+    color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+}
+
+.userExist h1 {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}

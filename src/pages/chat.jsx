@@ -1,5 +1,5 @@
 import "../styles/chatroom.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SendImage from "../assets/Right-arrow.png";
 
 import OtherChats from "../components/fromChats";
@@ -12,6 +12,15 @@ function ChatRoom() {
     const userName = window.location.href.split("=")[1];
     const [bubbles, setBubbles] = useState([]);
     const chatRef = useRef(null);
+    const messagesEndRef = useRef(null);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [bubbles]);
 
     const submitChatClick = () => {
         const chatText = chatRef.current.value;
@@ -62,6 +71,8 @@ function ChatRoom() {
                         );
                     }
                 })}
+                <div ref={messagesEndRef}></div>
+                <div style={{ height: "0.1rem" }}></div>
             </div>
             <div className="chat-input">
                 <input

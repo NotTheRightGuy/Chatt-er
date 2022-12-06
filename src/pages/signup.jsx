@@ -1,11 +1,12 @@
 import "../styles/signup.css";
-import { useRef } from "react";
+import UserExist from "../components/userAlready";
+import { useRef, useState } from "react";
 import axios from "axios";
 function SignUp() {
     const userNameRef = useRef(null);
     const passwordRef = useRef(null);
     const emailRef = useRef(null);
-
+    const [userExists, setUserExists] = useState(false);
     const handleSignUp = () => {
         const user = {
             email: emailRef.current.value,
@@ -21,12 +22,15 @@ function SignUp() {
                 window.location.href = "/login";
             })
             .catch((err) => {
+                setUserExists(true);
+                setTimeout(() => setUserExists(false), 3000);
                 console.log(err);
             });
     };
 
     return (
         <div className="signup-container">
+            {userExists ? <UserExist /> : null}
             <div className="signup-title">Sign Up</div>
             <div className="signup-form">
                 <input type="text" placeholder="Email" ref={emailRef} />
